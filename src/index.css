@@ -1,0 +1,819 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@layer utilities {
+  .clip-bottom-right {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+  }
+}
+
+/* Custom CSS patterns for Folder Textures that are easier than pure Tailwind utilities */
+.folder-1 { background: #e6cfc2; }
+.folder-2 {
+  background: repeating-linear-gradient(45deg, #e6cfc2, #e6cfc2 10px, #d9c5b2 10px, #d9c5b2 20px);
+}
+.folder-3 {
+  background: radial-gradient(#d6cfc7 2px, transparent 2px);
+  background-size: 12px 12px;
+  background-color: #f5e6cc;
+}
+.folder-4 {
+  background: linear-gradient(#cbb8a9 1px, transparent 1px), linear-gradient(90deg, #cbb8a9 1px, transparent 1px);
+  background-size: 15px 15px;
+  background-color: #fdf6ec;
+}
+.folder-5 { background: #d9c5b2; }
+.folder-6 {
+  background: repeating-linear-gradient(0deg, #f5e6cc, #f5e6cc 8px, #fffaf3 8px, #fffaf3 16px);
+}
+
+/* --- LEGACY VANILLA CSS FOR PERFECT REPRODUCTION --- */
+
+/* ===== 1. VARIABLES & RESET ===== */
+:root {
+  --primary-bg: #FFFDF5; /* Very Light Pastel Cream */
+  --accent-pink: #f48fb1;
+  --accent-green: #e6eadf;
+  --accent-brown: #e6cfc2;
+  --border-brown: #cfaea3;
+  --text-dark: #3f4a3c;
+  --shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+body {
+  margin: 0;
+  font-family: 'Fredoka', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--primary-bg);
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ===== 2. WELCOME / AUTH SCREEN ===== */
+#welcome {
+  height: 100vh;
+  background: url("/welcomebg.png") center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  background: #FFF9E5;
+  padding: 40px 35px;
+  border-radius: 25px;
+  text-align: center;
+  width: 280px;
+  box-shadow: var(--shadow);
+}
+
+.title {
+  color: var(--accent-pink);
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+#authForm {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+button, .welcome-buttons button, #authForm button {
+  padding: 8px 18px;
+  background: var(--accent-brown);
+  color: #5c4033;
+  border: 1px solid var(--border-brown);
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: transform 0.1s ease;
+}
+
+button:hover { filter: brightness(0.98); }
+button:active { transform: scale(0.95); }
+
+#authForm input {
+  padding: 10px;
+  border-radius: 15px;
+  border: 1px solid #eee;
+  background: #fff;
+}
+
+/* ===== 3. HOME LAYOUT ===== */
+#home {
+  background: white;
+  min-height: 100vh;
+  font-family: 'Special Elite', cursive;
+  position: relative;
+  padding-bottom: 120px; /* Increased space for bottom lines and image */
+}
+
+.header-banner {
+  width: 100%;
+  height: 220px;
+  background: url("/header.jfif") center/cover no-repeat;
+}
+
+#welcomeUser {
+  padding-left: 20px;
+  margin-top: 15px;
+  font-size: 18px;
+  color: black;
+  font-weight: 300;
+  letter-spacing: 1.5px;
+}
+
+.quote-strip {
+  background: var(--accent-green);
+  color: var(--text-dark);
+  padding: 8px 15px;
+  font-size: 12px;
+  border-left: 3px solid #7a8a6f;
+  margin: 10px 0;
+  opacity: 0.8;
+}
+
+.main-layout {
+  display: grid;
+  grid-template-columns: 250px 1fr 250px;
+  gap: 30px;
+  padding: 20px;
+}
+
+/* ===== 4. GALLERY & COMPONENTS ===== */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.left-aesthetic {
+  margin-top: 30px;
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.left-aesthetic img {
+  width: 100%;
+  display: block;
+}
+
+.right-aesthetic {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.right-aesthetic img {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+}
+
+/* Bottom Divider section */
+.bottom-divider {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 20px;
+  padding: 0 20px;
+  box-sizing: border-box;
+  position: relative; /* Context for image positioning */
+}
+
+/* 1. Container for the whole footer area */
+.bottom-footer {
+  width: 100%;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px; /* Very small gap between the two lines */
+}
+
+/* 2. Individual Line Styling */
+.bottom-footer .line {
+  height: 7px; /* Reduced from 7px to look more like stationery lines */
+  width: 100%;
+  display: block;
+}
+
+/* 3. Updated Colors for better visibility */
+.bottom-footer .line.pink { 
+  background-color: #fbd6d2 !important; 
+}
+
+.bottom-footer .line.light { 
+  background-color: #f7e9e7 !important; 
+  margin-bottom: 2px; /* Extra gap before the strawberries start */
+}
+
+/* 4. The Repeating Strawberry Banner */
+.footer-repeat-banner {
+  width: 100%;
+  height: 50px; 
+  background-image: url('/footer-banner.png');
+  background-repeat: repeat-x;
+  background-size: contain;
+  background-position: left center;
+  filter: brightness(0.98);
+}
+
+/* Image Container in bottom section, aligned to the right */
+.divider-image-container {
+    width: 250px; /* Width matching panels for visual consistency */
+    margin-top: 15px; /* Space below lines */
+    align-self: flex-end; /* Aligns container itself to the right */
+}
+
+.divider-image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    display: block;
+    box-shadow: var(--shadow);
+}
+
+/* Nav/Tags */
+#navList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+#navList button {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+}
+
+/* Items */
+.item, .schedule-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.item input, .schedule-item input {
+  flex: 1;
+  padding: 6px;
+  border-radius: 10px;
+  border: 1px solid #efefef;
+  background: rgba(255,255,255,0.7);
+}
+
+.item button { background: none; border: none; color: #ccc; }
+
+/* ===== 5. POPUPS ===== */
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup-box {
+  background: #F4C2C2;
+  padding: 25px;
+  border-radius: 25px;
+  text-align: center;
+  width: 260px;
+  box-shadow: var(--shadow);
+}
+/* ===== 6. FLIP WATCH & THEME ===== */
+
+/* Theme Classes */
+body.light-theme { --clock-bg: #e6eadf; --clock-text: #3f4a3c; --page-bg: #FFFDF5; }
+body.dark-theme { --clock-bg: #2c3e50; --clock-text: #ecf0f1; --page-bg: #1a1a1a; }
+
+#flip-watch-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  border-radius: 20px;
+  background: var(--clock-bg);
+  transition: background 0.5s ease;
+}
+
+.date-display {
+  font-size: 14px;
+  color: var(--clock-text);
+  font-weight: 600;
+}
+
+.flip-watch {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.flip-card {
+  position: relative;
+  width: 60px;
+  height: 80px;
+  background: #C1D7AE;
+  border-radius: 8px;
+  font-size: 40px;
+  font-weight: bold;
+  color: #333;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.flip-card .top, .flip-card .bottom {
+  height: 50%;
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+}
+
+.flip-card .top {
+  top: 0;
+  background: #C1D7AE;
+  border-radius: 8px 8px 0 0;
+  line-height: 80px; /* Aligns number */
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.flip-card .bottom {
+  bottom: 0;
+  background: #E6D5C9;
+  border-radius: 0 0 8px 8px;
+  line-height: 0px; /* Aligns number */
+}
+
+.sep {
+  font-size: 30px;
+  color: var(--clock-text);
+  padding-bottom: 5px;
+}
+
+.ampm {
+  font-size: 12px;
+  margin-left: 5px;
+  color: var(--clock-text);
+  font-weight: bold;
+  align-self: flex-end;
+  padding-bottom: 10px;
+}
+
+/* Flip Animation */
+@keyframes flip {
+  0% { transform: rotateX(0deg); }
+  100% { transform: rotateX(-180deg); }
+}
+
+.flipping .top {
+  animation: flip 0.6s ease-in;
+  transform-origin: bottom;
+  z-index: 2;
+}
+.bottom-footer {
+  width: 100%;
+  margin-top: 50px;
+  padding: 0;
+}
+
+.footer-repeat-banner {
+  width: 100%;
+  /* Match the natural height of your strawberry image */
+  height: 50px; 
+  
+  /* Link your strawberry image here */
+  background-image: url('/footer.jfif');
+  
+  /* This makes it repeat horizontally but not vertically */
+  background-repeat: repeat-x;
+  
+  /* This ensures the image stays its original size (sharp quality) */
+  background-size: contain;
+  
+  /* Centers the pattern vertically */
+  background-position: left center;
+  
+  display: block;
+  filter: brightness(0.98);
+}
+/* ===== CATEGORY PAGE ===== */
+.category-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  padding: 20px;
+}
+
+.category-header {
+  padding: 20px;
+  font-size: 20px;
+}
+
+/* ENTRY FOLDERS */
+.entry-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.entry-folder {
+  position: relative;
+  width: 140px;
+  height: 90px;
+  border-radius: 12px;
+  padding: 10px;
+
+  font-size: 13px;
+  font-weight: 600;
+  color: #5c4033;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  background: #e6cfc2;
+border: 1px solid rgba(0,0,0,0.05);
+backdrop-filter: blur(2px);
+}
+
+/* folder tab */
+.entry-folder::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 15px;
+  width: 50px;
+  height: 20px;
+  background: inherit;
+  border-radius: 8px 8px 0 0;
+}
+
+/* hover */
+.entry-folder:hover {
+  transform: translateY(-4px) scale(1.03);
+}
+
+/*  hover effect */
+.entry-folder:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+/*  click effect */
+.entry-folder:active {
+  transform: scale(0.95);
+}
+
+/* REMINDERS */
+.cat-right .item {
+  display: flex;
+  gap: 5px;
+}
+/* ===== ENTRY PAGE ===== */
+.entry-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  padding: 20px;
+}
+
+.entry-header {
+  padding: 20px;
+}
+
+/* NOTES */
+.notes-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.page {
+  background: white;
+  padding: 15px;
+  border-radius: 15px;
+  min-height: 120px;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.page textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  resize: none;
+  background: transparent;
+  font-family: 'Special Elite', cursive;
+}
+
+/* delete button */
+.page button {
+  position: absolute;
+  top: 5px;
+  right: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* ENTRY TODO */
+.entry-todo .item {
+  display: flex;
+  gap: 5px;
+}
+button {
+  font-size: 12px;
+  border-radius: 12px;
+}
+/* ===== NOTEBOOK PAGE ===== */
+.page {
+  background: #fffdf7;
+  padding: 20px;
+  border-radius: 15px;
+  min-height: 150px;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+
+  position: relative;
+  overflow: hidden;
+}
+
+/*  LINES */
+.page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 30px;
+  width: 1px;
+  height: 100%;
+  background: #ffd6d6; /* margin line */
+}
+
+.page textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  resize: none;
+
+  font-family: 'Special Elite', cursive;
+  font-size: 14px;
+  line-height: 1.8;
+
+  background-image: linear-gradient(
+    to bottom,
+    transparent 27px,
+    #e6eadf 28px
+  );
+  background-size: 100% 28px;
+
+  padding-left: 40px;
+  background-color: transparent;
+}
+/* ===== PAGE TRANSITIONS ===== */
+#home,
+#categoryPage,
+#entryPage {
+  transition: opacity 0.3s ease;
+}
+
+.hidden {
+  display: none !important;
+  opacity: 0;
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.category-header h2 {
+  font-family: 'Special Elite', cursive;
+  font-size: 22px;
+  letter-spacing: 1px;
+  margin: 20px;
+}
+.editable-quote {
+  margin: 10px 20px;
+  cursor: text;
+  outline: none;
+}
+.category-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 40px;
+  padding: 20px;
+}
+
+.cat-left, .cat-right {
+  background: #fffaf3;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+}
+
+/* section headers like pinterest style */
+.cat-left h3,
+.cat-right h3 {
+  background: #f6dede;
+  padding: 6px 12px;
+  border-radius: 10px;
+  display: inline-block;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.entry-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 40px;
+  padding: 20px;
+}
+
+.notes-section {
+  background: #fffdf7;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.entry-todo {
+  background: #fffaf3;
+  padding: 20px;
+  border-radius: 20px;
+}
+/* ===== FOLDER PATTERNS ===== */
+
+.folder-1 { background: #e6cfc2; }
+
+.folder-2 {
+  background: repeating-linear-gradient(
+    45deg,
+    #e6cfc2,
+    #e6cfc2 10px,
+    #d9c5b2 10px,
+    #d9c5b2 20px
+  );
+}
+
+.folder-3 {
+  background:
+    radial-gradient(#d6cfc7 2px, transparent 2px);
+  background-size: 12px 12px;
+  background-color: #f5e6cc;
+}
+
+.folder-4 {
+  background:
+    linear-gradient(#cbb8a9 1px, transparent 1px),
+    linear-gradient(90deg, #cbb8a9 1px, transparent 1px);
+  background-size: 15px 15px;
+  background-color: #fdf6ec;
+}
+
+.folder-5 {
+  background: #d9c5b2;
+}
+
+.folder-6 {
+  background:
+    repeating-linear-gradient(
+      0deg,
+      #f5e6cc,
+      #f5e6cc 8px,
+      #fffaf3 8px,
+      #fffaf3 16px
+    );
+}
+.editor-toolbar {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 5px;
+}
+
+.editor-toolbar button {
+  font-size: 12px;
+  padding: 4px 8px;
+}
+
+.editor {
+  min-height: 120px;
+  background: white;
+  border-radius: 10px;
+  padding: 10px;
+  outline: none;
+  border: 1px solid #eee;
+}
+
+.entry-container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #fffdf7;
+  border-radius: 25px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.entry-header {
+  margin-bottom: 20px;
+}
+
+.entry-header h2 {
+  font-family: 'Special Elite', cursive;
+  font-size: 20px;
+  color: #5c4033;
+}
+
+.entry-header h3 {
+  font-size: 16px;
+  margin-top: 5px;
+  color: #7a6a5f;
+}
+.back-btn {
+  background: #f5e4dc;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.entry-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  margin-top: 20px;
+}
+.entry-divider {
+  margin-top: 15px;
+  padding: 10px 15px;
+  border-left: 3px solid #cfaea3;
+  background: #f7f3ef;
+  font-size: 13px;
+  opacity: 0.8;
+  border-radius: 10px;
+}
+.page {
+  background: #fff;
+  border-radius: 15px;
+  padding: 15px;
+  margin-top: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.04);
+}
+.editor {
+  min-height: 150px;
+  outline: none;
+  font-family: 'Special Elite', cursive;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.add-page-btn {
+  width: 100%;
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  background: #e6cfc2;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.entry-todo {
+  background: #fff9f5;
+  padding: 15px;
+  border-radius: 20px;
+  height: fit-content;
+}
